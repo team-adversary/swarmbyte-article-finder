@@ -3,7 +3,7 @@ Contributors: swarmbyte
 Tags: search, articles, rest-api
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 2.1.1
+Stable tag: 2.1.2
 Requires PHP: 8.0
 
 Adds a public search interface and REST API for published SwarmByte articles.
@@ -39,6 +39,6 @@ Returns a published WordPress article or an entry from the private legacy archiv
 
 == Changelog ==
 
-= 2.1.1 =
+= 2.1.2 =
 
-* Moved legacy article storage to the private archive service.
+* Restricted legacy article reads to the archive client directory.

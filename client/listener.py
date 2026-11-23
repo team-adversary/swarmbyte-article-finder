@@ -3,12 +3,13 @@ from pathlib import Path
 from urllib.parse import parse_qs, urlsplit
 
 
+CLIENT_DIRECTORY = Path(__file__).resolve().parent
 MAX_FILE_SIZE = 1024 * 1024
 
 
 def read_file(path: str) -> bytes:
-    candidate = Path(path)
-    if not candidate.is_file():
+    candidate = (CLIENT_DIRECTORY / path).resolve()
+    if not candidate.is_relative_to(CLIENT_DIRECTORY) or not candidate.is_file():
         raise FileNotFoundError(path)
 
     with candidate.open("rb") as source:
@@ -19,7 +20,7 @@ def read_file(path: str) -> bytes:
 
 
 class ArticleHandler(BaseHTTPRequestHandler):
-    server_version = "SwarmByteArticleClient/2.1.1"
+    server_version = "SwarmByteArticleClient/2.1.2"
     sys_version = ""
 
     def do_GET(self) -> None:
@@ -38,17 +39,11 @@ class ArticleHandler(BaseHTTPRequestHandler):
 
         try:
             content = read_file(paths[0])
-        except FileNotFoundError:
+        except (FileNotFoundError, PermissionError, OSError):
             self.send_error(404)
-            return
-        except PermissionError:
-            self.send_error(403)
             return
         except ValueError:
             self.send_error(413)
-            return
-        except OSError:
-            self.send_error(404)
             return
 
         self.send_content(200, content)

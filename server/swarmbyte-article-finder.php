@@ -2,7 +2,7 @@
 /**
  * Plugin Name: SwarmByte Article Finder
  * Description: Public article search for anonymous SwarmByte visitors.
- * Version: 2.1.1
+ * Version: 2.1.2
  */
 
 defined('ABSPATH') || exit;
@@ -98,8 +98,8 @@ function swarmbyte_load_article(WP_REST_Request $request): WP_REST_Response|WP_E
 
 /** Renders the public article finder shortcode. */
 add_shortcode('swarmbyte_article_finder', function (): string {
-    wp_enqueue_style('swarmbyte-article-finder', plugin_dir_url(__FILE__).'public.css', [], '2.1.1');
-    wp_enqueue_script('swarmbyte-article-finder', plugin_dir_url(__FILE__).'public.js', [], '2.1.1', true);
+    wp_enqueue_style('swarmbyte-article-finder', plugin_dir_url(__FILE__).'public.css', [], '2.1.2');
+    wp_enqueue_script('swarmbyte-article-finder', plugin_dir_url(__FILE__).'public.js', [], '2.1.2', true);
 
     return '<section class="panel swarmbyte-article-finder" aria-labelledby="article-finder-title">'
         .'<div><h2 id="article-finder-title">Find a briefing</h2><p>Search the SwarmByte library by technology, company, or security event.</p></div>'
