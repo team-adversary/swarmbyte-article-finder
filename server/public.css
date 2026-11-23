@@ -1,0 +1,56 @@
+.swarmbyte-article-finder {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.swarmbyte-article-finder h2,
+.swarmbyte-article-finder p {
+  margin-top: 0;
+}
+
+.swarmbyte-finder-form {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.swarmbyte-finder-form label {
+  font-weight: 700;
+}
+
+.swarmbyte-finder-controls {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.swarmbyte-finder-controls input {
+  min-width: 0;
+  flex: 1;
+}
+
+.swarmbyte-finder-controls button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.swarmbyte-finder-status {
+  min-height: 1.4em;
+  color: var(--ink-soft, #53666a);
+}
+
+.swarmbyte-finder-results {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.swarmbyte-finder-results article {
+  padding-top: 1rem;
+  border-top: 1px solid var(--line, #c9d0c9);
+}
+
+@media (max-width: 520px) {
+  .swarmbyte-finder-controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
